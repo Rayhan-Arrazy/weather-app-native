@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WETHR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- satu desain aja persis, tapi dibikin tailwindnya juga -->
+
+<body>
+    <div class="card">
+        <div class="search">
+            <input type="text" id="search-bar" placeholder="Enter city name...">
+            <button id="search-btn" class="btn">Search</button>
+        </div>
+
+        <!-- SEARCH THE CITY -->
+        <div class="weather loading">
+            <h2 class="city" id="city">FIND YOUR CITY HERE!</h2>
+            <h2 class="temp" id="temp"></h2>
+            <div class="description" id="desc"></div>
+            <div class="humidity" id="humidity"></div>
+        </div>
+
+        <!-- RESULT -->
+        <!-- <div class="weather loading">
+            <h1 class="city" id="city">Weather in Denver</h1>
+            <h2 class="temp" id="temp">51°C</h2>
+            <div class="description" id="desc">Cloudy</div>
+            <div class="humidity" id="humidity">Humidity: 60%</div>
+        </div> -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

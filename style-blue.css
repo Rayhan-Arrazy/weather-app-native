@@ -1,0 +1,236 @@
+/* --- RESET & BASIC STYLING --- */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family:
+    "SF Pro Display",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  color: white;
+  overflow: hidden; /* Prevents scrollbars during blob animation */
+}
+
+/* --- THEME COLOR DEFINITIONS (Variables) --- */
+/* Default (Awaiting Search) */
+#root-theme {
+  --color1: #1e3c72;
+  --color2: #2a5298;
+  --color3: #13274f;
+  --cardBg: rgba(255, 255, 255, 0.08);
+}
+
+/* Clear Sky (Day) */
+#root-theme[data-weather="clear"] {
+  --color1: #f7b733;
+  --color2: #fc4a1a;
+  --color3: #ff9a9e;
+  --cardBg: rgba(0, 0, 0, 0.15);
+}
+
+/* Rain / Storm */
+#root-theme[data-weather="rain"] {
+  --color1: #485563;
+  --color2: #29323c;
+  --color3: #0f172a;
+  --cardBg: rgba(255, 255, 255, 0.05);
+}
+
+/* Clouds / Fog */
+#root-theme[data-weather="clouds"] {
+  --color1: #bdc3c7;
+  --color2: #2c3e50;
+  --color3: #7f8c8d;
+  --cardBg: rgba(0, 0, 0, 0.2);
+}
+
+/* --- THE FLUID BACKGROUND (Animated Blobs) --- */
+.fluid-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background: var(--color3);
+  transition: background 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blob-cont {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: blur(60px); /* Gives the organic merging effect */
+  opacity: 0.8;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen; /* How the colors interact */
+  transition: background 1s ease;
+}
+
+.blob-1 {
+  top: 10%;
+  left: 10%;
+  width: 400px;
+  height: 400px;
+  background: var(--color1);
+  animation: blobify 20s infinite ease-in-out alternate;
+}
+
+.blob-2 {
+  bottom: 10%;
+  right: 10%;
+  width: 350px;
+  height: 350px;
+  background: var(--color2);
+  animation: blobify 15s infinite ease-in-out alternate-reverse;
+}
+
+.blob-3 {
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: blobify 25s infinite ease-in-out alternate;
+}
+
+/* The core fluid movement animation */
+@keyframes blobify {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(100px, -50px) scale(1.1) rotate(120deg);
+  }
+  66% {
+    transform: translate(-50px, 100px) scale(0.9) rotate(240deg);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(360deg);
+  }
+}
+
+/* --- MAIN APP SHELL (Layout) --- */
+.app-shell {
+  position: relative; /* Sits above the blobs */
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* --- SEARCH REGION (Rounded) --- */
+.search-region {
+  display: flex;
+  background: var(--cardBg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  padding: 8px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.search-region:focus-within {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+#city-search {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0 15px;
+}
+
+#city-search::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#search-trigger {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#search-trigger:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* --- WEATHER DATA DISPLAY (Centering) --- */
+.weather-results {
+  text-align: center;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+/* Used for initial fade-in */
+.view-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none; /* User can't interact while hidden */
+}
+
+/* Fluid Typography (Changes size with screen width) */
+#display-city {
+  font-size: clamp(2rem, 5vw, 3rem); /* min, ideal, max */
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+#fluid-context {
+  font-style: italic;
+  background: rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  margin-top: 20px;
+}
+
+/* --- THE DATA GRID --- */
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.data-block {
+  background: var(--cardBg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(5px);
+}
+
+.data-block span {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 700;
+}
+
+.data-block small {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  margin-top: 5px;
+}

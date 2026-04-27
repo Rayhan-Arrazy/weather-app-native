@@ -15,7 +15,7 @@
 
 ---
 
-## 🚀 The Development Journey (Click to Expand)
+## 🚀 The Development 
 
 To build a solid foundation before transitioning to React/Next.js, I built this application iteratively. This repository contains the two major phases of the project.
 

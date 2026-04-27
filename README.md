@@ -1,62 +1,36 @@
-<div align="center">
-  
-# 🌤️ Atmosphere: Dynamic Weather Engine
+# Atmosphere: Dynamic Weather Engine
 
-[![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)](#)
-[![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](#)
-[![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](#)
-<br>
-![GitHub last commit](https://img.shields.io/github/last-commit/Rayhan-Arrazy/weather-app-native?style=flat-square&color=56ab2f)
-![GitHub repo size](https://img.shields.io/github/repo-size/Rayhan-Arrazy/weather-app-native?style=flat-square&color=2a5298)
+**A portfolio project built entirely in Native JavaScript, demonstrating deep mastery of the DOM, Asynchronous API integration, and modern CSS Keyframe animations.**
 
-> **A portfolio project built entirely in Native JavaScript, demonstrating deep mastery of the DOM, Asynchronous API integration, and modern CSS Keyframe animations.**
-
-</div>
+Most beginner weather apps simply display a temperature and a static icon. **Atmosphere** takes raw data from the OpenWeather API and utilizes a custom **Context Engine** to translate it into human experiences. Simultaneously, the application's user interface dynamically fluid-shifts its color palette and animations to physically match the temperature and conditions outside.
 
 ---
 
-## 🚀 The Development 
+## The Development 
 
-To build a solid foundation before transitioning to React/Next.js, I built this application iteratively. This repository contains the two major phases of the project.
+To build a solid architectural foundation before transitioning to modern frameworks like React or Next.js, this application is documented in two distinct versions within the repository.
 
-<details>
-<summary><b>🔵 Phase 1: Base Application (Glassmorphism & UX)</b> - <code>index-base.html</code></summary>
-<br>
-<b>Focus:</b> Logic, Networking, and Modern UI trends.
-<ul>
-<li>Implemented the <code>fetch()</code> API with <code>async/await</code> to reliably pull data from OpenWeatherMap.</li>
-<li>Engineered a "Frosted Glass" interface using <code>backdrop-filter: blur()</code>.</li>
-<li>Introduced the <b>Atmospheric Context Engine</b>: Instead of forcing the user to calculate if 12°C is cold, the app parses the weather condition and temperature to provide actionable advice (e.g., <i>"It's freezing. Dress warm! ⛄"</i>).</li>
-</ul>
-</details>
+### Version 1: Core Foundation (`-base` files)
+**Focus:** Logic, Networking, and DOM Manipulation.
+* Implemented the `fetch()` API with `async/await` to reliably pull live data from OpenWeatherMap.
+* Built dynamic string interpolation using ES6 Template Literals.
+* Designed a graceful error-handling state for "City Not Found" or network failure scenarios.
+* Establishes the foundational HTML structure and basic CSS styling needed to display dynamic data.
 
-<details open>
-<summary><b>🟣 Phase 2: Fluid Dynamics (The Soul)</b> - <code>index-new.html</code></summary>
-<br>
-<b>Focus:</b> High-Performance CSS Animations and Async UI Transitions.
-<ul>
-<li>Replaced static backgrounds with layered, CSS-only organic blob animations using <code>@keyframes</code> and <code>mix-blend-mode</code>.</li>
-<li>Created a Theme-Shifting algorithm: The JavaScript reads the temperature and dynamically injects new CSS variables smoothly morphing the entire app's color palette.</li>
-<li>Built async UI transitions to smoothly fade data in and out during network requests.</li>
-</ul>
-</details>
+### Version 2: Fluid Dynamics & UX (`-new` files)
+**Focus:** High-Performance CSS Animations, Glassmorphism, and User Experience.
+* **The Context Engine:** Parses the weather condition and temperature algorithms to provide actionable advice (e.g., *"It's freezing. Dress warm! ⛄"*).
+* **Fluid UI:** Replaced static backgrounds with layered, CSS-only organic blob animations using `@keyframes` and `mix-blend-mode`.
+* **Theme-Shifting Algorithm:** The JavaScript engine reads the incoming temperature data and dynamically injects new CSS variables, smoothly morphing the entire application's color palette without reloading the page.
+* **Glassmorphism:** Engineered a modern "Frosted Glass" interface utilizing `backdrop-filter` CSS properties and asynchronous UI transitions to smoothly fade data in and out.
 
 ---
 
-## 🧠 Core Technical Achievements
+## Technical Achievements
 
-- ⚡ **Zero Dependencies:** Built without React, Tailwind, or external libraries to prove a deep understanding of core Web APIs.
-- 📐 **Fluid Typography:** Uses CSS `clamp()` to ensure text scales perfectly on any device without relying on brittle media queries.
-- ⏳ **Asynchronous State Management:** Handles the delay between a user clicking "Search" and the data arriving, ensuring the UI doesn't break or flash abruptly.
-- 🎨 **Data-Driven Styling:** The DOM actively reacts to JSON payloads, changing its physical appearance based on API conditions.
+- **Zero Dependencies:** Built entirely without React, Tailwind, or external libraries to prove a deep, fundamental understanding of core Web APIs.
+- **Fluid Typography:** Utilizes the CSS `clamp()` function to ensure text scales perfectly and remains readable on any device without relying on brittle media queries.
+- **Asynchronous State Management:** Handles the network delay between a user initiating a search and the data arriving, ensuring the UI doesn't break, jump, or flash abruptly.
+- **Data-Driven Styling:** The Document Object Model (DOM) actively reacts to JSON payloads, changing its physical appearance and layout based on API conditions.
 
 ---
-
-## 🛠️ How to Run Locally
-
-```bash
-# 1. Clone the repository
-git clone [https://github.com/Rayhan-Arrazy/weather-app-native.git](https://github.com/Rayhan-Arrazy/weather-app-native.git)
-
-# 2. Navigate to the directory
-cd weather-app-native
